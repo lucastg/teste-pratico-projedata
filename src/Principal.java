@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -25,11 +26,13 @@ public class Principal {
 
         // 3.3 - Imprimir todos os funcionários
         System.out.println("----------------------------------------------");
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
         System.out.println("Funcionários:");
         for (Funcionario funcionario : funcionarios) {
+            String salarioFormatado = numberFormat.format(funcionario.getSalario());
             System.out.println("Nome: " + funcionario.getNome());
             System.out.println("Data de Nascimento: " + funcionario.getDataNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            System.out.println("Salário: " + funcionario.getSalario().toString().replace(".", ","));
+            System.out.println("Salário: " + salarioFormatado);
             System.out.println("Função: " + funcionario.getFuncao());
             System.out.println("----------------------------------------------");
         }
